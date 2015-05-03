@@ -1,4 +1,16 @@
 pagepoll
 ========
 
-A utility for checking the updates of online pages.
+A daemonised utility for checking the updates of online pages, written in
+Haskell.
+
+
+Usage
+-----
+
+`pagepoll [-l LOGIN_URL] URL` will grab a copy of the `URL`, by first logging
+into the page at `LOGIN_URL`.
+
+
+<hr />
+&copy; 2015 nathyong
