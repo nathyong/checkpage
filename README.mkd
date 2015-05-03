@@ -1,5 +1,5 @@
-pagepoll
-========
+checkpage
+=========
 
 A daemonised utility for checking the updates of online pages, written in
 Haskell.
@@ -8,9 +8,11 @@ Haskell.
 Usage
 -----
 
-`pagepoll [-l LOGIN_URL] URL` will grab a copy of the `URL`, by first logging
-into the page at `LOGIN_URL`.
+`checkpage [-l LOGIN_URL] URL` will grab a copy of the `URL`, by first logging
+into the page at `LOGIN_URL`.  If this is the first time the utility has been
+run, it will save a copy of the important parts of the page (yet to be
+decided), and on subsequent runs of the utility it will notify you if there has
+been a change in the page's content.
 
 
-<hr />
 &copy; 2015 nathyong

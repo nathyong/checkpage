@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- |
--- Main entry point for the pagepoll utility.
+-- Main entry point for the checkpage utility.
 
 module Main where
 
