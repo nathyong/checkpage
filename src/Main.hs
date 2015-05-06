@@ -1,7 +1,7 @@
 -- | Main entry point for checkpage executable.
 
 import System.Environment (getArgs)
-import System.Exit
+import System.Exit (exitFailure)
 
 import Checkpage.Main (runMainWith)
 import Checkpage.Options (Config (..), defaultConfig)
@@ -11,13 +11,13 @@ main = getArgs >>= parseArgs defaultConfig
 
 parseArgs :: Config -> [String] -> IO ()
 parseArgs conf args = case args of
-    [] -> showHelp
+    [] -> showHelp >> exitFailure
     "-h":_ -> showHelp
     "--help":_ -> showHelp
-    x@('-':_):_ -> putStrLn ("Unknown option: " ++ x) >> showHelp
+    x@('-':_):_ -> putStrLn ("Unknown option: " ++ x) >> showHelp >> exitFailure
     "-l":url:xs -> parseArgs (conf {loginURL = url}) xs
     url:[] -> runMainWith conf url
-    _ -> showHelp
+    _ -> showHelp >> exitFailure
 
 showHelp :: IO ()
 showHelp = putStr "Usage:\n\
