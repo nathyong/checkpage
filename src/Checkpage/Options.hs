@@ -1,16 +1,11 @@
 module Checkpage.Options (
-      Config (..)
-    , defaultConfig
+      defaultConfig
 ) where
 
--- | Program configuration.
-data Config = Config {
-      loginURL :: String
-      -- ^ URL of the page to log in with, if any.
-    }
+import Checkpage.Types (Config (..))
 
 -- | Default program configuration.
 defaultConfig :: Config
 defaultConfig = Config {
-      loginURL = ""
+      loginURL = Nothing
     }

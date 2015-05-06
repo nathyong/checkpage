@@ -2,7 +2,7 @@ module Checkpage.Main (
     runMainWith
 ) where
 
-import Checkpage.Options (Config (..))
+import Checkpage.Types (Config (..))
 
 runMainWith :: Config -> String -> IO ()
 runMainWith = undefined

@@ -4,7 +4,8 @@ import System.Environment (getArgs)
 import System.Exit (exitFailure)
 
 import Checkpage.Main (runMainWith)
-import Checkpage.Options (Config (..), defaultConfig)
+import Checkpage.Options (defaultConfig)
+import Checkpage.Types (Config (..))
 
 main :: IO ()
 main = getArgs >>= parseArgs defaultConfig
@@ -15,7 +16,7 @@ parseArgs conf args = case args of
     "-h":_ -> showHelp
     "--help":_ -> showHelp
     x@('-':_):_ -> putStrLn ("Unknown option: " ++ x) >> showHelp >> exitFailure
-    "-l":url:xs -> parseArgs (conf {loginURL = url}) xs
+    "-l":url:xs -> parseArgs (conf {loginURL = Just url}) xs
     url:[] -> runMainWith conf url
     _ -> showHelp >> exitFailure
 
