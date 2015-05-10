@@ -8,4 +8,5 @@ import Checkpage.Types (Config (..))
 defaultConfig :: Config
 defaultConfig = Config {
       loginURL = Nothing
+    , configFile = Just "~/.checkpagerc"
     }

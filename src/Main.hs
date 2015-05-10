@@ -15,9 +15,10 @@ parseArgs conf args = case args of
     [] -> showHelp >> exitFailure
     "-h":_ -> showHelp
     "--help":_ -> showHelp
-    x@('-':_):_ -> putStrLn ("Unknown option: " ++ x) >> showHelp >> exitFailure
     "-l":url:xs -> parseArgs (conf {loginURL = Just url}) xs
-    url:[] -> runMainWith conf url
+    "-f":path:xs -> parseArgs (conf {configFile = Just path}) xs
+    x@('-':_):_ -> putStrLn ("Unknown option: " ++ x) >> showHelp >> exitFailure
+    urls -> runMainWith conf urls
     _ -> showHelp >> exitFailure
 
 showHelp :: IO ()
