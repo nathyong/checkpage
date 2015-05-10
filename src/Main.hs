@@ -10,6 +10,7 @@ import Checkpage.Types (Config (..))
 main :: IO ()
 main = getArgs >>= parseArgs defaultConfig
 
+
 parseArgs :: Config -> [String] -> IO ()
 parseArgs conf args = case args of
     [] -> showHelp >> exitFailure
@@ -19,7 +20,7 @@ parseArgs conf args = case args of
     "-f":path:xs -> parseArgs (conf {configFile = Just path}) xs
     x@('-':_):_ -> putStrLn ("Unknown option: " ++ x) >> showHelp >> exitFailure
     urls -> runMainWith conf urls
-    _ -> showHelp >> exitFailure
+
 
 showHelp :: IO ()
 showHelp = putStr "Usage:\n\
